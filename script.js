@@ -12,8 +12,8 @@ let sortOrd = { column: null, asc: true };
 let selectrowIndx = -1;
 
 function renderTbl() {
-    const tableBody = document.querySelector('#chemicalTable tbody');
-    tableBody.innerHTML = '';
+    const tblbdy = document.querySelector('#chemicalTable tbody');
+    tblbdy.innerHTML = '';
     
     chemi.forEach((chemical, index) => {
         const row = document.createElement('tr');
@@ -30,24 +30,20 @@ function renderTbl() {
         `;
         row.setAttribute('data-index', index);
         row.onclick = () => selectRow(index);
-        tableBody.appendChild(row);
+        tblbdy.appendChild(row);
     });
 }
-
 function sortTbl(column) {
     const isAsc = sortOrd.column === column ? !sortOrd.asc : true;
     chemi.sort((a, b) => (a[column] > b[column] ? 1 : -1) * (isAsc ? 1 : -1));
     sortOrd = { column, asc: isAsc };
     renderTbl();
 }
-
 function selectRow(index) {
     selectrowIndx = index;
     const rows = document.querySelectorAll('tbody tr');
     rows.forEach(row => row.classList.remove('selected'));
     rows[selectrowIndx].classList.add('selected');
-
-
     const chemical = chemi[selectrowIndx];
     document.getElementById('editId').value = chemical.id;
     document.getElementById('editChemicalName').value = chemical.chemicalName;
@@ -80,12 +76,6 @@ function cancelEdit() {
     document.getElementById('editPanel').classList.add('hidden');
 }
 
-function addRow() {
-    const newRow = { id: chemi.length + 1, chemicalName: "New Chemical", vendor: "", density: 0, viscosity: 0, packaging: "", packSize: 0, unit: "", quantity: 0 };
-    chemi.push(newRow);
-    renderTbl();
-}
-
 function deleteRow() {
     if (selectrowIndx >= 0) {
         chemi.splice(selectrowIndx, 1);
@@ -94,7 +84,11 @@ function deleteRow() {
         renderTbl();
     }
 }
-
+function addRow() {
+    const newRow = { id: chemi.length + 1, chemicalName: "New Chemical", vendor: "", density: 0, viscosity: 0, packaging: "", packSize: 0, unit: "", quantity: 0 };
+    chemi.push(newRow);
+    renderTbl();
+}
 function moveRowUp() {
     if (selectrowIndx > 0) {
         [chemi[selectrowIndx], chemi[selectrowIndx - 1]] = [chemi[selectrowIndx - 1], chemi[selectrowIndx]];
@@ -102,7 +96,6 @@ function moveRowUp() {
         renderTbl();
     }
 }
-
 function moveRowDown() {
     if (selectrowIndx < chemi.length - 1) {
         [chemi[selectrowIndx], chemi[selectrowIndx + 1]] = [chemi[selectrowIndx + 1], chemi[selectrowIndx]];
@@ -118,15 +111,12 @@ function refreshData() {
 }
 
 function saveData() {
-    // Local storage
     localStorage.setItem('chemicalSupplies', JSON.stringify(chemi));
     document.getElementById('saveconfirmation').classList.remove('hidden');
     setTimeout(() => {
         document.getElementById('saveconfirmation').classList.add('hidden');
     }, 2000);
 }
-
-
 window.onload = function() {
     const savedData = JSON.parse(localStorage.getItem('chemicalSupplies'));
     if (savedData) {

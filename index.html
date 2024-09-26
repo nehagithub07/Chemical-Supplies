@@ -9,7 +9,6 @@
 <body>
     <div class="container">
         <h1>Chemical Supplies</h1>
-        
         <div class="toolbar">
             <button onclick="addRow()">➕ Add</button>
             <button onclick="moveRowUp()">⬆ Move Up</button>
@@ -18,11 +17,9 @@
             <button onclick="refreshData()">🔄 Refresh</button> 
             <button onclick="saveData()">💾 Save</button>
         </div>
-
         <div id="saveconfirmation" class="save-confirmation hidden">
             Data saved successfully!
         </div>
-
         <table id="chemicalTable">
             <thead>
                 <tr>
@@ -40,7 +37,6 @@
             <tbody>
             </tbody>
         </table>
-
         <div id="editPanel" class="edit-panel hidden">
             <h3>Edit Chemical Information</h3>
             <label>ID: <input type="text" id="editId" disabled></label><br>
@@ -55,9 +51,7 @@
             <button onclick="saveEdit()">Save Changes</button>
             <button onclick="cancelEdit()">Cancel</button>
         </div>
-        
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
