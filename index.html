@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemical Supplies</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Chemical Supplies</h1>
+        
+        <div class="toolbar">
+            <button onclick="addRow()">➕ Add</button>
+            <button onclick="moveRowUp()">⬆ Move Up</button>
+            <button onclick="moveRowDown()">⬇ Move Down</button>
+            <button onclick="deleteRow()">🗑 Delete</button>
+            <button onclick="refreshData()">🔄 Refresh</button> 
+            <button onclick="saveData()">💾 Save</button>
+        </div>
+
+        <div id="saveconfirmation" class="save-confirmation hidden">
+            Data saved successfully!
+        </div>
+
+        <table id="chemicalTable">
+            <thead>
+                <tr>
+                    <th onclick="sortTbl('id')">ID</th>
+                    <th onclick="sortTbl('chemicalName')">Chemical Name</th>
+                    <th onclick="sortTbl('vendor')">Vendor</th>
+                    <th onclick="sortTbl('density')">Density (g/m³)</th>
+                    <th onclick="sortTbl('viscosity')">Viscosity (m²/s)</th>
+                    <th onclick="sortTbl('packaging')">Packaging</th>
+                    <th onclick="sortTbl('packSize')">Pack Size</th>
+                    <th onclick="sortTbl('unit')">Unit</th>
+                    <th onclick="sortTbl('quantity')">Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+        <div id="editPanel" class="edit-panel hidden">
+            <h3>Edit Chemical Information</h3>
+            <label>ID: <input type="text" id="editId" disabled></label><br>
+            <label>Chemical Name: <input type="text" id="editChemicalName"></label><br>
+            <label>Vendor: <input type="text" id="editVendor"></label><br>
+            <label>Density: <input type="text" id="editDensity"></label><br>
+            <label>Viscosity: <input type="text" id="editViscosity"></label><br>
+            <label>Packaging: <input type="text" id="editPackaging"></label><br>
+            <label>Pack Size: <input type="text" id="editPackSize"></label><br>
+            <label>Unit: <input type="text" id="editUnit"></label><br>
+            <label>Quantity: <input type="text" id="editQuantity"></label><br>
+            <button onclick="saveEdit()">Save Changes</button>
+            <button onclick="cancelEdit()">Cancel</button>
+        </div>
+        
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
