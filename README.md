@@ -2,6 +2,8 @@
 
 This project is a web application that allows users to manage a list of chemical supplies. Users can view, sort, edit, add, delete, move rows, and save data. The table supports sorting on various columns and features an external edit panel for modifying row data.
 
+**Live Link**: [Chemical Supplies Table](https://chemical-supplies-two.vercel.app/)
+
 ## Features
 - **Dynamic Table**: Displays a list of chemicals with properties like name, vendor, density, viscosity, packaging, and more.
 - **Sorting**: Click on the column headers to sort the table in ascending or descending order.
@@ -54,4 +56,3 @@ This project is a web application that allows users to manage a list of chemical
 6. **Move Row**: Use the "Move Up" (⬆️) and "Move Down" (⬇️) buttons to adjust the order of rows.
 7. **Save Data**: After making changes, click the **Save** button (💾) to store the data. A success message will appear confirming that the data has been saved.
 8. **Refresh Data**: Use the refresh button (🔄) to reload the table data to its original state.
-
